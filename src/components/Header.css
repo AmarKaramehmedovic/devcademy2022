@@ -1,0 +1,43 @@
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../img/header.png") !important;
+    height: 500px !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-text {
+    height: 500px;
+    text-align: left;
+    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+    padding-left: 10%;
+
+    /* float: left;
+    position: relative;
+    left: -50%; */
+}
+
+.hero-text h1{
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 60px;
+    padding-bottom: 10px;
+}
+
+.hero-text h3{
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 36px;
+    padding-bottom: 3px;
+}
+
+.hero-text h5{
+    font-family: Roboto;
+    font-weight: 900;
+    font-size: 22px;
+}

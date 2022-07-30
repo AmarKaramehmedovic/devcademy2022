@@ -1,0 +1,46 @@
+.acc-card{
+    border: none;
+}
+
+
+.acc-card-pic {
+    display: block;
+    text-align: center;
+    width: auto !important;
+    height: auto !important;
+    margin: -50px;
+}
+
+.acc-card-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #000000;
+}
+
+.acc-card-location {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #ADADAD;
+}
+
+.acc-card-price {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #1A3440;
+}
+
+.acc-card-rating {
+    color: #F3B08E !important;
+}
