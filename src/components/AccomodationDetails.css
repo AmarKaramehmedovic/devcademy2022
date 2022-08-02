@@ -1,0 +1,96 @@
+.acc-details-hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/img/accDetailsImg1.png");
+    height: 627px;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.acc-details-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #000000;
+}
+
+.acc-details-subtitle {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    color: #ADADAD;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+    color: #7C7C7C;
+}
+
+.acc-details-cancelation {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+    color: #1A3440;
+}
+
+.acc-details-rating {
+    color: #F3B08E !important;
+}
+
+.acc-details-description {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+    color: #1A3440;
+}
+
+.acc-details-info-card-wrapper{
+    padding-left: 5%;
+}
+
+.acc-details-info-card-body {
+    line-height: 1.2em;
+    background: #F2FDFC;
+    box-shadow: 0px 4px 4px rgba(205, 205, 205, 0.25);
+    border-radius: 10px;
+}
+
+.info-card-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+    color: #000000;
+}
+
+.info-card-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+    color: #1A3440;
+}
+
+.info-card-btn {
+    width: 100%;
+    background: #40E0D0;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+}
+
+.info-card-btn-wrapper{
+    text-align: center;
+}

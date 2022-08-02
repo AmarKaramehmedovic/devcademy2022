@@ -1,0 +1,50 @@
+.place-card {
+    border: none;
+}
+
+.place-card-pic {
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+}
+
+.place-card-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #000000;
+}
+
+.place-card-location {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #ADADAD;
+}
+
+.place-card-subtitle {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 120%;
+    letter-spacing: 0.25px;
+    color: #1A3440;
+}
+
+.place-card-buttons {
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+}
+
+.place-card-buttons a:any-link {
+    text-decoration: none;
+}
