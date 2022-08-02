@@ -26,22 +26,13 @@ type AccomodationDetailsProps = {
 };
 
 const AccomodationDetails = (props: AccomodationDetailsProps) => {
-    const title = props.title;
-    const subtitle = props.subtitle;
-    const description = props.description;
-    const type = props.type;
-    const categorization = props.categorization;
-    const personCount = props.personCount;
-    const imageUrl = props.imageUrl;
-    const freeCancelation = props.freeCancelation;
-    const price = props.price;
-    const location = props.location;
-    const postalCode = props.postalCode;
+
+    const { title, subtitle, description, type, categorization, personCount, imageUrl, freeCancelation, price, location, postalCode } = props;
 
     return (
         <Container fluid>
             <Row>
-                <Col><div className="hero-image" /></Col>
+                <Col><div className="acc-details-hero-image" /></Col>
             </Row>
             <Row>
                 <Col sm={8}>
@@ -64,9 +55,7 @@ const AccomodationDetails = (props: AccomodationDetailsProps) => {
                         </Card.Text>
                     </Card.Body>
                 </Col>
-                <Col sm={1}>
-                    empty
-                </Col>
+                <Col sm={1} />
                 <Col sm={3} className='acc-details-info-card-wrapper'>
                     <br></br>
                     <MDBCard className='acc-details-info-card'>

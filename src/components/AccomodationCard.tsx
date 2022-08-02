@@ -5,7 +5,7 @@ import Placeholder from 'react-bootstrap/Placeholder';
 import Rating from '@mui/material/Rating';
 import ImageIcon from '@mui/icons-material/Image';
 import AspectRatio from '@mui/joy/AspectRatio';
-import './AccomodationCard.css'
+import './AccomodationCard.css';
 
 type AccomodationProps = {
     title: string;
@@ -15,14 +15,12 @@ type AccomodationProps = {
 };
 
 const AccomodationCard = (props: AccomodationProps) => {
-    const title = props.title;
-    const location = props.location;
-    const price = props.price;
-    const categorization = props.categorization;
+
+    const { title, location, price, categorization } = props;
 
     return (
         <Card className='acc-card' style={{ width: '18rem' }}>
-            <ImageIcon className='acc-card-pic' fontSize='large' sx={{ color: 'text.tertiary' }} />
+            <Card.Img className='acc-card-pic' variant="top" src='/img/accImg1.png' />
             <Card.Body>
                 <Card.Title className='acc-card-title'>{title}</Card.Title>
                 <Card.Text className='acc-card-location'>{location}</Card.Text>

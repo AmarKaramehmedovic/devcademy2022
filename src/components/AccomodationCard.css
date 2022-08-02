@@ -2,13 +2,10 @@
     border: none;
 }
 
-
 .acc-card-pic {
-    display: block;
-    text-align: center;
-    width: auto !important;
-    height: auto !important;
-    margin: -50px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
 }
 
 .acc-card-title {

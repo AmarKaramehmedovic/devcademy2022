@@ -14,13 +14,12 @@ type PlaceProps = {
 };
 
 const PlaceCard = (props: PlaceProps) => {
-    const title = props.title;
-    const location = props.location;
-    const subtitle = props.subtitle;
+
+    const { title, location, subtitle } = props;
 
     return (
         <Card className='place-card' style={{ width: '18rem' }}>
-            <ImageIcon className='place-card-pic' fontSize='large' sx={{ color: 'text.tertiary' }} />
+            <Card.Img className='place-card-pic' variant="top" src='/img/placeImg1.png' />
             <Card.Body>
                 <Card.Title className='place-card-title'>{title}</Card.Title>
                 <Card.Text className='place-card-location'>{location}</Card.Text>

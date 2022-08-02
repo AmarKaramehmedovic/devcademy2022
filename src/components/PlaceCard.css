@@ -1,13 +1,11 @@
-.place-card{
+.place-card {
     border: none;
 }
 
 .place-card-pic {
-    display: block;
-    text-align: center;
-    width: auto !important;
-    height: auto !important;
-    margin: -50px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
 }
 
 .place-card-title {
@@ -40,13 +38,13 @@
     color: #1A3440;
 }
 
-.place-card-buttons{
+.place-card-buttons {
     font-size: 14px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 600;
 }
 
-.place-card-buttons a:any-link{
+.place-card-buttons a:any-link {
     text-decoration: none;
 }

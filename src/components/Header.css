@@ -1,6 +1,6 @@
 .hero-image {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../img/header.png") !important;
-    height: 500px !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("/img/header.png");
+    height: 600px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,17 +9,11 @@
 .hero-text {
     height: 500px;
     text-align: left;
-    
+    padding-left: 10%;
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
-
-    padding-left: 10%;
-
-    /* float: left;
-    position: relative;
-    left: -50%; */
 }
 
 .hero-text h1{
