@@ -1,0 +1,47 @@
+.res-card {
+    box-sizing: border-box;
+    width: 618px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #E3E3E3;
+    border-radius: 8px;
+}
+
+.res-card-img-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.res-card-img {
+    width: auto;
+    height: auto;
+    padding: 15px;
+
+    border-radius: 4px;
+}
+
+.res-card-title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+    color: #000000;
+}
+
+.res-card-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+    color: #1A3440;
+}
+
+.res-card-rating {
+    color: #F3B08E !important;
+    padding-bottom: 1em;
+}

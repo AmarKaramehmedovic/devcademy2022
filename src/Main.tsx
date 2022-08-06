@@ -6,6 +6,11 @@ import PlaceCard from './components/PlaceCard';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import CityCard from './components/CityCard';
+import AccomodationSearch from './components/AccomodationSearch';
+import SimpleSearch from './components/SimpleSearch';
+import AdvancedSearch from './components/AdvancedSearch';
+import ReservationForm from './components/ReservationForm';
+import ReservationCard from './components/ReservationCard';
 
 function Main() {
     const accomodations = [
@@ -55,8 +60,20 @@ function Main() {
 
     return (
         <div className="Main">
-            <Navigation></Navigation>
-            <Header></Header>
+            <Navigation />
+            <Header />
+            <AccomodationSearch />
+            <SimpleSearch />
+            <AdvancedSearch />
+            <ReservationForm />
+            <ReservationCard
+                title={accomodationsDetails[0].title}
+                categorization={accomodationsDetails[0].categorization}
+                type={accomodationsDetails[0].type}
+                price={accomodationsDetails[0].price}
+                location={accomodationsDetails[0].location}
+                postalCode={accomodationsDetails[0].postalCode}
+            />
             <AccomodationCard
                 title={accomodations[0].title}
                 location={accomodations[0].location}
@@ -85,7 +102,7 @@ function Main() {
                 location={accomodationsDetails[0].location}
                 postalCode={accomodationsDetails[0].postalCode}
             />
-            <Footer></Footer>
+            <Footer />
         </div>
     );
 }
