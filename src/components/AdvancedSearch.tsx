@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AccomodationSearch.css'
 import Box from '@mui/material/Box';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -9,13 +9,6 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { MDBBtn } from 'mdb-react-ui-kit';
 
-interface State {
-    location: string;
-    date1: Date;
-    date2: Date;
-    personCount: number;
-    accType: Object
-}
 
 const AdvancedSearch = () => {
     const accType = [
@@ -33,23 +26,39 @@ const AdvancedSearch = () => {
         }
     ];
 
-    const [date1, setDate1] = React.useState<Date | null>(new Date());
-    const [date2, setDate2] = React.useState<Date | null>(new Date());
+    const [formValues, setFormValues] = useState({
+        personCount: "",
+        accType: "",
+    });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("Fetch updated filter");
+    const [dateValues, setDateValues] = useState({
+        checkInDate: new Date(),
+        checkOutDate: new Date()
+    });
+
+    const handleChange = (name: string, value: string) => {
+        setFormValues((values) => ({ ...values, [name]: value }));
     };
 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(formValues);
+    };
+
+    const [handleCheckInDate, setCheckInDate] = React.useState<Date | null>(new Date());
+    const [handleCheckOutDate, setCheckOutDate] = React.useState<Date | null>(new Date());
+
     return (
+        <form onSubmit={handleSubmit}>
         <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
             <div>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className='date-picker'>
                         <DatePicker
                             label="Check in"
-                            value={date1}
-                            onChange={(newValue) => {
-                                setDate1(newValue);
+                            value={handleCheckInDate}
+                            onChange={(value) => {
+                                setCheckInDate(value);
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -57,9 +66,9 @@ const AdvancedSearch = () => {
                     <div className='date-picker'>
                         <DatePicker
                             label="Check out"
-                            value={date2}
-                            onChange={(newValue) => {
-                                setDate2(newValue);
+                            value={handleCheckOutDate}
+                            onChange={(value) => {
+                                setCheckOutDate(value);
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -69,7 +78,11 @@ const AdvancedSearch = () => {
             <div>
                 <TextField
                     label="How many people?"
+                    name="peopleCount"
+                    // onChange={handleChange}
+                    value={formValues.personCount}
                     id="outlined-start-adornment"
+                    type="number"
                     sx={{ m: 1, width: '25ch' }}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"><Person /></InputAdornment>,
@@ -79,6 +92,9 @@ const AdvancedSearch = () => {
             <div>
                 <TextField
                     label="What type of accomodation?"
+                    name="accType"
+                    // onChange={handleChange}
+                    value={formValues.accType}
                     id="outlined-start-adornment"
                     sx={{ m: 1, width: '25ch' }}
                     select
@@ -94,9 +110,10 @@ const AdvancedSearch = () => {
                 </TextField>
             </div>
             <div>
-                <MDBBtn type='button' className='search-btn'>SEARCH</MDBBtn>
+                <MDBBtn type='submit' className='search-btn'>SEARCH</MDBBtn>
             </div>
         </Box>
+        </form>
     );
 }
 

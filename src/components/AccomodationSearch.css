@@ -7,8 +7,9 @@
 }
 
 .search-btn {
-    width: 148px;
-    height: 56px;
+    /* width: 148px;
+    height: 56px; */
+    padding: 14px 44px;
     margin-top: 8px;
     
     background: #40E0D0;

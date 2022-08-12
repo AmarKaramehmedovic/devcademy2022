@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ReservationForm.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -10,14 +10,31 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 const ReservationForm = () => {
 
-    const [date1, setDate1] = React.useState<Date | null>(new Date());
-    const [date2, setDate2] = React.useState<Date | null>(new Date());
+    const [formValues, setFormValues] = useState({
+        fullName: "",
+        email: "",
+        personCount: ""
+    });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("Fetch updated filter");
+    const [dateValues, setDateValues] = useState({
+        checkInDate: new Date(),
+        checkOutDate: new Date()
+    });
+
+    const handleChange = (name: string, value: string) => {
+        setFormValues((values) => ({ ...values, [name]: value }));
     };
 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(formValues);
+    };
+
+    const [handleCheckInDate, setCheckInDate] = React.useState<Date | null>(new Date());
+    const [handleCheckOutDate, setCheckOutDate] = React.useState<Date | null>(new Date());
+
     return (
+        <form onSubmit={handleSubmit}>
         <Box
             component="form"
             noValidate
@@ -29,6 +46,8 @@ const ReservationForm = () => {
                 <TextField
                     id="outlined-basic"
                     label="Full Name"
+                    name="accType"
+                    // onChange={handleChange}
                     sx={{ m: 1, width: '100%' }}
                 />
             </div>
@@ -36,6 +55,8 @@ const ReservationForm = () => {
                 <TextField
                     id="outlined-basic"
                     label="Email address"
+                    name="accType"
+                    // onChange={handleChange}
                     sx={{ m: 1, width: '100%' }}
                 />
             </div>
@@ -43,6 +64,8 @@ const ReservationForm = () => {
                 <TextField
                     id="outlined-basic"
                     label="Number of guests"
+                    name="accType"
+                    // onChange={handleChange}
                     sx={{ m: 1, width: '100%' }}
                 />
             </div>
@@ -51,9 +74,9 @@ const ReservationForm = () => {
                     <div className='res-date-picker1' style={{ width: '50%' }}>
                         <DatePicker
                             label="Check in"
-                            value={date1}
-                            onChange={(newValue) => {
-                                setDate1(newValue);
+                            value={handleCheckInDate}
+                            onChange={(value) => {
+                                setCheckInDate(value);
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -61,9 +84,9 @@ const ReservationForm = () => {
                     <div className='res-date-picker2' style={{ width: '50%' }}>
                         <DatePicker
                             label="Check out"
-                            value={date2}
-                            onChange={(newValue) => {
-                                setDate2(newValue);
+                            value={handleCheckOutDate}
+                            onChange={(value) => {
+                                setCheckOutDate(value);
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
@@ -74,11 +97,12 @@ const ReservationForm = () => {
                 <Row>
                     <Col sm={6}></Col>
                     <Col sm={6}>
-                        <MDBBtn type='button' className='book-btn'>BOOK YOUR STAY</MDBBtn>
+                        <MDBBtn type='submit' className='book-btn'>BOOK YOUR STAY</MDBBtn>
                     </Col>
                 </Row>
             </Container>
         </Box>
+        </form>
     );
 }
 

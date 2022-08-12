@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AccomodationSearch.css'
 import Box from '@mui/material/Box';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -9,15 +9,27 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 
 const SimpleSearch = () => {
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("Fetch updated filter");
+    const [formValues, setFormValues] = useState({
+        location: ""
+    });
+
+    const handleChange = (name: string, value: string) => {
+        setFormValues((values) => ({ ...values, [name]: value }));
+    };
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(formValues);
     };
 
     return (
+        <form onSubmit={handleSubmit}>
         <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
             <div>
                 <TextField
                     label="Where are you going?"
+                    name="location"
+                    // onChange={handleChange}
                     id="outlined-start-adornment"
                     sx={{ m: 1, width: '50ch' }}
                     InputProps={{
@@ -26,9 +38,10 @@ const SimpleSearch = () => {
                 />
             </div> 
             <div>
-                <MDBBtn type='button' className='search-btn'>SEARCH</MDBBtn>
+                <MDBBtn type='submit' className='search-btn'>SEARCH</MDBBtn>
             </div>
         </Box>
+        </form>
     );
 }
 
