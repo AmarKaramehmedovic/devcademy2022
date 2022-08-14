@@ -13,9 +13,10 @@ const SimpleSearch = () => {
         location: ""
     });
 
-    const handleChange = (name: string, value: string) => {
-        setFormValues((values) => ({ ...values, [name]: value }));
-    };
+    const handleChange = (event: { target: { name: any; value: any; }; }) => {
+        const { target: { name, value } } = event;
+        setFormValues((values) => ({ ...values, [name]: value  }))
+    }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -23,13 +24,13 @@ const SimpleSearch = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-        <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
+        // <form onSubmit={handleSubmit}>
+        <Box onSubmit={handleSubmit} component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
             <div>
                 <TextField
                     label="Where are you going?"
                     name="location"
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     id="outlined-start-adornment"
                     sx={{ m: 1, width: '50ch' }}
                     InputProps={{
@@ -41,7 +42,7 @@ const SimpleSearch = () => {
                 <MDBBtn type='submit' className='search-btn'>SEARCH</MDBBtn>
             </div>
         </Box>
-        </form>
+        // </form>
     );
 }
 

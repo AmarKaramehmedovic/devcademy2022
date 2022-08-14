@@ -16,26 +16,24 @@ const ReservationForm = () => {
         personCount: ""
     });
 
-    const [dateValues, setDateValues] = useState({
-        checkInDate: new Date(),
-        checkOutDate: new Date()
-    });
+    const handleChange = (event: { target: { name: any; value: any; }; }) => {
+        const { target: { name, value } } = event;
+        setFormValues((values) => ({ ...values, [name]: value }))
+    }
 
-    const handleChange = (name: string, value: string) => {
-        setFormValues((values) => ({ ...values, [name]: value }));
-    };
+    const [checkInDateValue, setCheckInDate] = useState<Date | null>(new Date());
+    const [checkOutDateValue, setCheckOutDate] = useState<Date | null>(new Date());
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(formValues);
+        console.log(checkInDateValue);
+        console.log(checkOutDateValue);
     };
 
-    const [handleCheckInDate, setCheckInDate] = React.useState<Date | null>(new Date());
-    const [handleCheckOutDate, setCheckOutDate] = React.useState<Date | null>(new Date());
-
     return (
-        <form onSubmit={handleSubmit}>
-        <Box
+        // <form onSubmit={handleSubmi</form>t}>
+        <Box onSubmit={handleSubmit}
             component="form"
             noValidate
             autoComplete="off"
@@ -46,8 +44,8 @@ const ReservationForm = () => {
                 <TextField
                     id="outlined-basic"
                     label="Full Name"
-                    name="accType"
-                    // onChange={handleChange}
+                    name="fullName"
+                    onChange={handleChange}
                     sx={{ m: 1, width: '100%' }}
                 />
             </div>
@@ -55,8 +53,8 @@ const ReservationForm = () => {
                 <TextField
                     id="outlined-basic"
                     label="Email address"
-                    name="accType"
-                    // onChange={handleChange}
+                    name="email"
+                    onChange={handleChange}
                     sx={{ m: 1, width: '100%' }}
                 />
             </div>
@@ -64,8 +62,8 @@ const ReservationForm = () => {
                 <TextField
                     id="outlined-basic"
                     label="Number of guests"
-                    name="accType"
-                    // onChange={handleChange}
+                    name="personCount"
+                    onChange={handleChange}
                     sx={{ m: 1, width: '100%' }}
                 />
             </div>
@@ -74,20 +72,22 @@ const ReservationForm = () => {
                     <div className='res-date-picker1' style={{ width: '50%' }}>
                         <DatePicker
                             label="Check in"
-                            value={handleCheckInDate}
-                            onChange={(value) => {
-                                setCheckInDate(value);
-                            }}
+                            inputFormat="dd-MM-yyyy"
+                            value={checkInDateValue}
+                            onChange={(e) =>
+                                setCheckInDate(e)
+                            }
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </div>
                     <div className='res-date-picker2' style={{ width: '50%' }}>
                         <DatePicker
                             label="Check out"
-                            value={handleCheckOutDate}
-                            onChange={(value) => {
-                                setCheckOutDate(value);
-                            }}
+                            inputFormat="dd-MM-yyyy"
+                            value={checkOutDateValue}
+                            onChange={(e) =>
+                                setCheckOutDate(e)
+                            }
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </div>
@@ -102,7 +102,7 @@ const ReservationForm = () => {
                 </Row>
             </Container>
         </Box>
-        </form>
+        // </form>
     );
 }
 

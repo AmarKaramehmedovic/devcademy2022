@@ -11,13 +11,6 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { isValidDateValue } from '@testing-library/user-event/dist/utils';
 import { MDBBtn } from 'mdb-react-ui-kit';
 
-interface State {
-    location: string;
-    date1: Date;
-    date2: Date;
-    personCount: number;
-    accType: Object
-}
 
 const AccomodationSearch = () => {
     const accType = [
@@ -35,19 +28,36 @@ const AccomodationSearch = () => {
         }
     ];
 
-    const [date1, setDate1] = React.useState<Date | null>(new Date());
-    const [date2, setDate2] = React.useState<Date | null>(new Date());
+    const [formValues, setFormValues] = React.useState({
+        location: "",
+        personCount: "",
+        accType: ""
+    });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("Fetch updated filter");
+    const handleChange = (event: { target: { name: any; value: any; }; }) => {
+        const { target: { name, value } } = event;
+        setFormValues((values) => ({ ...values, [name]: value  }))
+    }
+
+    const [checkInDateValue, setCheckInDate] = React.useState<Date | null>(new Date());
+    const [checkOutDateValue, setCheckOutDate] = React.useState<Date | null>(new Date());
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(checkInDateValue);
+        console.log(checkOutDateValue);
+        console.log(formValues);
     };
 
     return (
-        <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
+        // <form onSubmit={handleSubmit}>
+        <Box onSubmit={handleSubmit} component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
             <div>
                 <TextField
                     label="Where are you going?"
+                    name="location"
                     id="outlined-start-adornment"
+                    onChange={handleChange}
                     sx={{ m: 1, width: '25ch' }}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"><KingBed /></InputAdornment>,
@@ -59,20 +69,22 @@ const AccomodationSearch = () => {
                     <div className='date-picker'>
                         <DatePicker
                             label="Check in"
-                            value={date1}
-                            onChange={(newValue) => {
-                                setDate1(newValue);
-                            }}
+                            inputFormat="dd-MM-yyyy"
+                            value={checkInDateValue}
+                            onChange={(e) =>
+                                setCheckInDate(e)
+                            }
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </div>
                     <div className='date-picker'>
                         <DatePicker
                             label="Check out"
-                            value={date2}
-                            onChange={(newValue) => {
-                                setDate2(newValue);
-                            }}
+                            inputFormat="dd-MM-yyyy"
+                            value={checkOutDateValue}
+                            onChange={(e) =>
+                                setCheckOutDate(e)
+                            }
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </div>
@@ -81,7 +93,9 @@ const AccomodationSearch = () => {
             <div>
                 <TextField
                     label="How many people?"
+                    name="personCount"
                     id="outlined-start-adornment"
+                    onChange={handleChange}
                     sx={{ m: 1, width: '25ch' }}
                     InputProps={{
                         startAdornment: <InputAdornment position="start"><Person /></InputAdornment>,
@@ -91,7 +105,9 @@ const AccomodationSearch = () => {
             <div>
                 <TextField
                     label="What type of accomodation?"
+                    name="accType"
                     id="outlined-start-adornment"
+                    onChange={handleChange}
                     sx={{ m: 1, width: '25ch' }}
                     select
                     InputProps={{
@@ -106,9 +122,10 @@ const AccomodationSearch = () => {
                 </TextField>
             </div>
             <div>
-                <MDBBtn type='button' className='search-btn'>SEARCH</MDBBtn>
+                <MDBBtn type='submit' className='search-btn'>SEARCH</MDBBtn>
             </div>
         </Box>
+        // </form>
     );
 }
 

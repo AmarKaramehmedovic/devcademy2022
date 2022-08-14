@@ -28,35 +28,34 @@ const AdvancedSearch = () => {
 
     const [formValues, setFormValues] = useState({
         personCount: "",
-        accType: "",
+        accType: ""
     });
 
-    const [dateValues, setDateValues] = useState({
-        checkInDate: new Date(),
-        checkOutDate: new Date()
-    });
+    const handleChange = (event: { target: { name: any; value: any; }; }) => {
+        const { target: { name, value } } = event;
+        setFormValues((values) => ({ ...values, [name]: value  }))
+    }
 
-    const handleChange = (name: string, value: string) => {
-        setFormValues((values) => ({ ...values, [name]: value }));
-    };
+    const [checkInDateValue, setCheckInDate] = useState<Date | null>(new Date());
+    const [checkOutDateValue, setCheckOutDate] = useState<Date | null>(new Date());
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        console.log(checkInDateValue);
+        console.log(checkOutDateValue);
         console.log(formValues);
     };
 
-    const [handleCheckInDate, setCheckInDate] = React.useState<Date | null>(new Date());
-    const [handleCheckOutDate, setCheckOutDate] = React.useState<Date | null>(new Date());
-
     return (
-        <form onSubmit={handleSubmit}>
-        <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
+        // <form onSubmit={handleSubmit}>
+        <Box onSubmit={handleSubmit} component="form" sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignContent: 'center' }} noValidate autoComplete="off">
             <div>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <div className='date-picker'>
                         <DatePicker
                             label="Check in"
-                            value={handleCheckInDate}
+                            inputFormat="dd-MM-yyyy"
+                            value={checkInDateValue}
                             onChange={(value) => {
                                 setCheckInDate(value);
                             }}
@@ -66,10 +65,11 @@ const AdvancedSearch = () => {
                     <div className='date-picker'>
                         <DatePicker
                             label="Check out"
-                            value={handleCheckOutDate}
-                            onChange={(value) => {
-                                setCheckOutDate(value);
-                            }}
+                            inputFormat="dd-MM-yyyy"
+                            value={checkOutDateValue}
+                            onChange={(e) =>
+                                setCheckOutDate(e)
+                            }
                             renderInput={(params) => <TextField {...params} />}
                         />
                     </div>
@@ -78,9 +78,8 @@ const AdvancedSearch = () => {
             <div>
                 <TextField
                     label="How many people?"
-                    name="peopleCount"
-                    // onChange={handleChange}
-                    value={formValues.personCount}
+                    name="personCount"
+                    onChange={handleChange}
                     id="outlined-start-adornment"
                     type="number"
                     sx={{ m: 1, width: '25ch' }}
@@ -93,8 +92,7 @@ const AdvancedSearch = () => {
                 <TextField
                     label="What type of accomodation?"
                     name="accType"
-                    // onChange={handleChange}
-                    value={formValues.accType}
+                    onChange={handleChange}
                     id="outlined-start-adornment"
                     sx={{ m: 1, width: '25ch' }}
                     select
@@ -113,7 +111,7 @@ const AdvancedSearch = () => {
                 <MDBBtn type='submit' className='search-btn'>SEARCH</MDBBtn>
             </div>
         </Box>
-        </form>
+        // </form>
     );
 }
 
