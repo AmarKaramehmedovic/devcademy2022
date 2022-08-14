@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './AccomodationSearch.css'
 import Box from '@mui/material/Box';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -13,7 +13,7 @@ const SimpleSearch = () => {
         location: ""
     });
 
-    const handleChange = (event: { target: { name: any; value: any; }; }) => {
+    const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { target: { name, value } } = event;
         setFormValues((values) => ({ ...values, [name]: value  }))
     }
