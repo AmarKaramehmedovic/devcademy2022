@@ -28,6 +28,10 @@
     padding: 0 30px;
 }
 
+.nav-bar li:not(.logo, .logout){
+    text-decoration: underline;
+}
+
 .logo {
     position: absolute;
     left: 0;
